@@ -7,4 +7,10 @@ describe("App component", () => {
     const button = screen.getByRole("button", { name: "First MUI Component" });
     expect(button).toBeInTheDocument();
   });
+
+  it("has a navbar", () => {
+    render(<App></App>);
+    const navbar = screen.getByText("Authentication");
+    expect(navbar).toBeInTheDocument();
+  });
 });
