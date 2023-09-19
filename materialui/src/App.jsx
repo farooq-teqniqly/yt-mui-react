@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { Navbar } from "./components/Navbar/Navbar";
 
-function App() {
+export const App = () => {
   const handleClick = (e) => {
     console.log(e);
   };
@@ -14,6 +14,4 @@ function App() {
       <Navbar></Navbar>
     </>
   );
-}
-
-export default App;
+};
