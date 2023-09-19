@@ -1,11 +1,12 @@
 import React from "react";
 import { pageStyles } from "../pageStyles";
+import Grid from "@mui/material/Grid";
 
 export const Storage = () => {
   return (
-    <div style={pageStyles}>
+    <Grid item xs={8} sx={pageStyles}>
       <span>Storage page!</span>
       <a href={`/`}>Home</a>
-    </div>
+    </Grid>
   );
 };
