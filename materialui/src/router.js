@@ -11,29 +11,31 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-  },
-  {
-    path: "authentication",
-    element: <Authentication></Authentication>,
-  },
-  {
-    path: "database",
-    element: <Database></Database>,
-  },
-  {
-    path: "storage",
-    element: <Storage></Storage>,
-  },
-  {
-    path: "hosting",
-    element: <Hosting></Hosting>,
-  },
-  {
-    path: "functions",
-    element: <Functions></Functions>,
-  },
-  {
-    path: "machine-learning",
-    element: <MachineLearning></MachineLearning>,
+    children: [
+      {
+        path: "authentication",
+        element: <Authentication></Authentication>,
+      },
+      {
+        path: "database",
+        element: <Database></Database>,
+      },
+      {
+        path: "storage",
+        element: <Storage></Storage>,
+      },
+      {
+        path: "hosting",
+        element: <Hosting></Hosting>,
+      },
+      {
+        path: "functions",
+        element: <Functions></Functions>,
+      },
+      {
+        path: "machine-learning",
+        element: <MachineLearning></MachineLearning>,
+      },
+    ],
   },
 ]);
