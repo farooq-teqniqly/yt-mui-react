@@ -1,15 +1,12 @@
-import Button from "@mui/material/Button";
+import { Outlet } from "react-router-dom";
+import { Navbar } from "./components/Navbar/Navbar";
+import Grid from "@mui/material/Grid";
 
-function App() {
-  const handleClick = (e) => {
-    console.log(e);
-  };
-
+export const App = () => {
   return (
-    <Button variant="contained" onClick={handleClick}>
-      First MUI Component
-    </Button>
+    <Grid container>
+      <Navbar></Navbar>
+      <Outlet />
+    </Grid>
   );
-}
-
-export default App;
+};
