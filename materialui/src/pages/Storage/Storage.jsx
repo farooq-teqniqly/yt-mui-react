@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Authentication = () => {
+export const Storage = () => {
   return (
     <>
-      <span>Authentication page!</span>
+      <span>Storage page!</span>
       <a href={`/`}>Home</a>
     </>
   );

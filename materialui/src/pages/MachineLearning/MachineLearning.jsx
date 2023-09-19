@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Authentication = () => {
+export const MachineLearning = () => {
   return (
     <>
-      <span>Authentication page!</span>
+      <span>Machine Learning page!</span>
       <a href={`/`}>Home</a>
     </>
   );

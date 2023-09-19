@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Authentication = () => {
+export const Hosting = () => {
   return (
     <>
-      <span>Authentication page!</span>
+      <span>Hosting page!</span>
       <a href={`/`}>Home</a>
     </>
   );
