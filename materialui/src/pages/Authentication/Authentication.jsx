@@ -17,7 +17,7 @@ export const Authentication = () => {
     <Grid item xs={8} sx={pageStyles}>
       <p>Authentication page!</p>
       <CommonButton variant="outlined" size="large" sx={buttonStyle}>
-        Login
+        Overriding theme with sx prop
       </CommonButton>
     </Grid>
   );
