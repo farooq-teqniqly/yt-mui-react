@@ -32,11 +32,13 @@ export const NotificationsBell = ({
           </Badge>
         </IconButton>
       </Tooltip>
-      <BasicMenu
-        open={open}
-        anchorEl={anchorEl}
-        handleClose={handleClose}
-      ></BasicMenu>
+      {notificationsCount > 0 && (
+        <BasicMenu
+          open={open}
+          anchorEl={anchorEl}
+          handleClose={handleClose}
+        ></BasicMenu>
+      )}
     </>
   );
 };

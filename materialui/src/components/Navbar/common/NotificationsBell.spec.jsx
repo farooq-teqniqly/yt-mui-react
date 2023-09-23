@@ -48,15 +48,32 @@ describe("NotificationsBell component", () => {
 
     const labels = menuItems.map((l) => l);
 
-    it.each(labels)("Shows menu when clicked", async (l) => {
-      const user = userEvent.setup();
-      render(<NotificationsBell></NotificationsBell>);
+    it.each(labels)(
+      "Does not shows menu when there are zero notifications",
+      async (l) => {
+        const user = userEvent.setup();
+        render(<NotificationsBell></NotificationsBell>);
 
-      const bell = screen.getByRole("button");
-      await user.click(bell);
+        const bell = screen.getByRole("button");
+        await user.click(bell);
 
-      const menuItem = screen.getByText(l);
-      expect(menuItem).toBeInTheDocument();
-    });
+        const menuItem = screen.queryByText(l);
+        expect(menuItem).not.toBeInTheDocument();
+      }
+    );
+
+    it.each(labels)(
+      "Shows menu when there is at least one notification",
+      async (l) => {
+        const user = userEvent.setup();
+        render(<NotificationsBell notificationsCount={1}></NotificationsBell>);
+
+        const bell = screen.getByRole("button");
+        await user.click(bell);
+
+        const menuItem = screen.getByText(l);
+        expect(menuItem).toBeInTheDocument();
+      }
+    );
   });
 });
