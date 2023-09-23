@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  NotificationsBell,
-  TOOLTIP_DEFAULT_MESSAGE,
-} from "./NotificationsBell";
+import { NotificationsBell } from "./NotificationsBell";
+import { menuItems } from "./menuItems";
 
 describe("NotificationsBell component", () => {
   describe("Layout", () => {
@@ -46,6 +44,19 @@ describe("NotificationsBell component", () => {
       const tooltip = screen.getByLabelText(tooltipMessage);
 
       expect(tooltip).toBeInTheDocument();
+    });
+
+    const labels = menuItems.map((l) => l);
+
+    it.each(labels)("Shows menu when clicked", async (l) => {
+      const user = userEvent.setup();
+      render(<NotificationsBell></NotificationsBell>);
+
+      const bell = screen.getByRole("button");
+      await user.click(bell);
+
+      const menuItem = screen.getByText(l);
+      expect(menuItem).toBeInTheDocument();
     });
   });
 });
