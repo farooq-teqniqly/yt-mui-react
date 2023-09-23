@@ -33,7 +33,7 @@ export const NotificationsBell = ({
           <IconButton
             color="primary"
             onClick={handleOpen}
-            disabled={notificationsCount == 0}
+            disabled={notificationsCount === 0}
           >
             <Badge badgeContent={notificationsCount} color="primary">
               <NotificationsIcon></NotificationsIcon>
