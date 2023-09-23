@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { IconButton } from "@mui/material";
@@ -9,20 +9,24 @@ export const NotificationsBell = ({
   notificationsCount = 0,
   tooltipMessage,
 }) => {
+  const toolTipRef = useRef();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleOpen = (e) => {
-    setAnchorEl(e.currentTarget);
+  const handleOpen = () => {
+    setAnchorEl(toolTipRef.current);
     setOpen(true);
   };
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setAnchorEl(null);
+  };
 
   return (
     <>
-      <Tooltip title={tooltipMessage}>
-        <IconButton color="primary" onClick={handleOpen} anchorEl={anchorEl}>
+      <Tooltip ref={toolTipRef} title={tooltipMessage}>
+        <IconButton color="primary" onClick={handleOpen}>
           <Badge badgeContent={notificationsCount} color="primary">
             <NotificationsIcon></NotificationsIcon>
           </Badge>
