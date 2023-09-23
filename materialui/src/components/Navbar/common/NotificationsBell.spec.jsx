@@ -23,19 +23,24 @@ describe("NotificationsBell component", () => {
       expect(notificationsCount).toBeInTheDocument();
     });
 
-    it("Does not show zero notifications.", () => {
+    it("Is disabled when there are zero notifications", () => {
       render(<NotificationsBell></NotificationsBell>);
-      const notificationsCount = screen.queryByText("0");
-      expect(notificationsCount).not.toBeInTheDocument();
+
+      const bell = screen.getByRole("button");
+      expect(bell).toBeDisabled();
     });
   });
+
   describe("User interaction", () => {
-    it("Shows tooltip with custom message", async () => {
+    it("Shows tooltip with custom message when hovering", async () => {
       const tooltipMessage = "This is a test.";
 
       const user = userEvent.setup();
       render(
-        <NotificationsBell tooltipMessage={tooltipMessage}></NotificationsBell>
+        <NotificationsBell
+          tooltipMessage={tooltipMessage}
+          notificationsCount={1}
+        ></NotificationsBell>
       );
 
       const bell = screen.getByRole("button");
@@ -49,21 +54,7 @@ describe("NotificationsBell component", () => {
     const labels = menuItems.map((l) => l);
 
     it.each(labels)(
-      "Does not shows menu when there are zero notifications",
-      async (l) => {
-        const user = userEvent.setup();
-        render(<NotificationsBell></NotificationsBell>);
-
-        const bell = screen.getByRole("button");
-        await user.click(bell);
-
-        const menuItem = screen.queryByText(l);
-        expect(menuItem).not.toBeInTheDocument();
-      }
-    );
-
-    it.each(labels)(
-      "Shows menu when there is at least one notification",
+      "Shows menu when clicked and there is at least one notification",
       async (l) => {
         const user = userEvent.setup();
         render(<NotificationsBell notificationsCount={1}></NotificationsBell>);

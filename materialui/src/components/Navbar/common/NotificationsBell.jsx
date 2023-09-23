@@ -25,12 +25,21 @@ export const NotificationsBell = ({
 
   return (
     <>
-      <Tooltip ref={toolTipRef} title={tooltipMessage}>
-        <IconButton color="primary" onClick={handleOpen}>
-          <Badge badgeContent={notificationsCount} color="primary">
-            <NotificationsIcon></NotificationsIcon>
-          </Badge>
-        </IconButton>
+      <Tooltip
+        ref={toolTipRef}
+        title={notificationsCount > 0 ? tooltipMessage : ""}
+      >
+        <span>
+          <IconButton
+            color="primary"
+            onClick={handleOpen}
+            disabled={notificationsCount == 0}
+          >
+            <Badge badgeContent={notificationsCount} color="primary">
+              <NotificationsIcon></NotificationsIcon>
+            </Badge>
+          </IconButton>
+        </span>
       </Tooltip>
       {notificationsCount > 0 && (
         <BasicMenu

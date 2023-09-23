@@ -7,7 +7,7 @@ export const Authentication = () => {
     <Grid item xs={8}>
       <p>Authentication page!</p>
       <NotificationsBell
-        notificationsCount={10}
+        notificationsCount={8}
         tooltipMessage={"You have unread notifications."}
       ></NotificationsBell>
     </Grid>
