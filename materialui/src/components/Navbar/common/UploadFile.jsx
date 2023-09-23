@@ -14,11 +14,30 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-export const UploadFile = ({ startIcon, onFileChanged }) => {
+export const DEFAULT_MAX_FILE_SIZE = 1024 * 1024;
+
+export const UploadFile = ({
+  startIcon,
+  onFileChanged,
+  maxFileSize = DEFAULT_MAX_FILE_SIZE,
+  onMaxFileSizeExcceded,
+}) => {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
+    const fileSize = selectedFile.size;
+
+    if (fileSize > maxFileSize) {
+      if (onMaxFileSizeExcceded) {
+        onMaxFileSizeExcceded({
+          file: selectedFile,
+          maxFileSize,
+        });
+      }
+      return;
+    }
 
     if (!onFileChanged) return;
+
     onFileChanged(selectedFile);
   };
 
