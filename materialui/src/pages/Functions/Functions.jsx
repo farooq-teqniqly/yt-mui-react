@@ -15,6 +15,7 @@ export const Functions = () => {
       <UploadFile
         startIcon={<CloudUploadIcon></CloudUploadIcon>}
         onFileChanged={onFileChanged}
+        maxFileSize={1024 * 1024 * 20}
       ></UploadFile>
     </Grid>
   );
